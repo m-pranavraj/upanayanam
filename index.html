@@ -16,6 +16,7 @@
         html {
             background-color: #fcfcfc;
             width: 100%;
+            min-height: 100%;
         }
 
         * {
@@ -33,6 +34,7 @@
             background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
             width: 100%;
             min-width: 1200px;
+            min-height: 100vh;
             margin: 0;
         }
 
@@ -63,11 +65,11 @@
         .curtain-panel::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; width: 200%; height: 100%;
             background-image: 
                 linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
                 url('bg.png');
-            background-size: cover;
+            background-size: 100% 100%;
         }
 
         .left-panel { 
@@ -75,8 +77,9 @@
             border-right: 2px solid var(--gold); 
         }
         .left-panel::before {
+            right: 0;
             transform: scaleX(-1);
-            background-position: right;
+            background-position: right center;
         }
         
         .right-panel { 
@@ -84,7 +87,8 @@
             border-left: 2px solid var(--gold); 
         }
         .right-panel::before {
-            background-position: left;
+            left: 0;
+            background-position: left center;
         }
 
         #curtain-wrapper.open .left-panel { transform: translateX(-100%); }
