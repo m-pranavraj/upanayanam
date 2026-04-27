@@ -16,6 +16,9 @@
         html {
             background-color: #fcfcfc;
             width: 100%;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         * {
@@ -992,9 +995,18 @@
                     }).catch(e => {});
                 }
             };
-            document.addEventListener('click', startAudio, { once: true });
             document.addEventListener('touchstart', startAudio, { once: true });
         };
+
+        // Pause music when tab is hidden, resume when returned
+        document.addEventListener("visibilitychange", () => {
+            const audio = document.getElementById("bgMusic");
+            if (document.hidden) {
+                if (musicPlaying) audio.pause();
+            } else {
+                if (musicPlaying) audio.play().catch(e => {});
+            }
+        });
     </script>
 </body>
 </html>
